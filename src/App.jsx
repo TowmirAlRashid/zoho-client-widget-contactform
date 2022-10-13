@@ -6,10 +6,10 @@ function App() {
   const contacts = [ "contact 1", "contact 2" ]
   return (
     <div>
-      <Box
+      {/* <Box
         sx={{ 
           m: "2rem auto 0",
-          width: "92%",
+          width: "94.5%",
           display: "flex",
           justifyContent: "flex-end",
         }}
@@ -19,14 +19,14 @@ function App() {
         >
           Add New Contact
         </Button>
-      </Box>
+      </Box> */}
 
       <Box
         component="form"
         noValidate
         sx={{
           width: "100%",
-          m: "1.5rem auto 1.5rem",
+          m: "2rem 0 1.5rem 1.5rem",
           display: "flex",
           // alignItems: "center"
         }}
@@ -129,7 +129,7 @@ function App() {
               <TextField
                 sx={{ width: "100%" }}
                 id='zipCode'
-                type='number'
+                type='text'
               />
             </Box>
           </Box>
@@ -137,20 +137,19 @@ function App() {
 
         {/* right side */}
         <Box sx={{ width: "50%", m: "1rem 2rem"}}>
-          {/* <Box sx={{
+          <Box sx={{
             display: "flex",
             alignItems: "center",
+            justifyContent: "flex-end",
             m: "0 auto 1.5rem",
           }}>
-            <Box sx={{ width: "30%", fontSize: "18px" }}>
-              <label>Add New Contact</label>
-            </Box>
             <Button
               variant='outlined'
+              sx={{ mr: "5%"}}
             >
               Add New Contact
             </Button>
-          </Box> */}
+          </Box>
 
           <Box sx={{
             display: "flex",
