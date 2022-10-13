@@ -1,26 +1,38 @@
-
 import { Autocomplete, Box, Button, TextField } from '@mui/material';
+import { useEffect, useState } from 'react';
 import './App.css';
 
+const ZOHO = window.ZOHO;
+
 function App() {
+  const [initialized, setInitialized] = useState(false) //initializing widget
+  const [entity, setEntity] = useState() //module entity 
+  const [entityId, setEntityId] = useState() //module id
+
+  const [disableFields, setDisableFields] = useState(true)  // textFields enabled?
+
+  useEffect(() => {  //rendered once during widget first load
+    ZOHO.embeddedApp.on("PageLoad", function (data) {
+      setEntity(data?.Entity);
+      setEntityId(data?.EntityId?.[0])
+    });
+
+    ZOHO.embeddedApp.init().then(() => {
+      ZOHO.CRM.UI.Resize({height: "600", width:"1000"}).then(function(data){
+        console.log(data);
+      });
+      setInitialized(true)
+    });
+  }, [])
+
   const contacts = [ "contact 1", "contact 2" ]
+
+  const handleAddContactClick = () => {
+    setDisableFields(!disableFields)
+  }
+
   return (
     <div>
-      {/* <Box
-        sx={{ 
-          m: "2rem auto 0",
-          width: "94.5%",
-          display: "flex",
-          justifyContent: "flex-end",
-        }}
-      >
-        <Button
-          variant='outlined'
-        >
-          Add New Contact
-        </Button>
-      </Box> */}
-
       <Box
         component="form"
         noValidate
@@ -28,7 +40,6 @@ function App() {
           width: "100%",
           m: "2rem 0 1.5rem 1.5rem",
           display: "flex",
-          // alignItems: "center"
         }}
       >
         {/* left side */}
@@ -44,6 +55,7 @@ function App() {
               <Box sx={{ width: "65%"}}>
                 <Autocomplete
                   disablePortal
+                  disabled={disableFields}
                   id="contacts"
                   options={contacts}
                   sx={{ width: "100%" }}
@@ -62,6 +74,7 @@ function App() {
               </Box>
               <Box sx={{ width: "65%"}}>
                 <TextField
+                  disabled={disableFields}
                   sx={{ width: "100%" }}
                   id='primaryContactFirstName'
                 />
@@ -79,6 +92,7 @@ function App() {
               <Box sx={{ width: "65%"}}>
                 <TextField
                   sx={{ width: "100%" }}
+                  disabled={disableFields}
                   id='primaryContactTitle'
                 />
               </Box>
@@ -97,6 +111,7 @@ function App() {
                   sx={{ width: "100%" }}
                   id='primaryContactPhone'
                   type='tel'
+                  disabled={disableFields}
                 />
               </Box>
           </Box>
@@ -113,6 +128,7 @@ function App() {
               <TextField
                 sx={{ width: "100%" }}
                 id='city'
+                disabled={disableFields}
               />
             </Box>
           </Box>
@@ -130,6 +146,7 @@ function App() {
                 sx={{ width: "100%" }}
                 id='zipCode'
                 type='text'
+                disabled={disableFields}
               />
             </Box>
           </Box>
@@ -146,6 +163,7 @@ function App() {
             <Button
               variant='outlined'
               sx={{ mr: "5%"}}
+              onClick={handleAddContactClick}
             >
               Add New Contact
             </Button>
@@ -163,6 +181,7 @@ function App() {
               <TextField
                 sx={{ width: "100%" }}
                 id='primaryContactLastName'
+                disabled={disableFields}
               />
             </Box>
           </Box>
@@ -180,6 +199,7 @@ function App() {
                 sx={{ width: "100%" }}
                 id='primaryContactEmail'
                 type='email'
+                disabled={disableFields}
               />
             </Box>
           </Box>
@@ -196,6 +216,7 @@ function App() {
               <TextField
                 sx={{ width: "100%" }}
                 id='street'
+                disabled={disableFields}
               />
             </Box>
           </Box>
@@ -212,6 +233,7 @@ function App() {
               <TextField
                 sx={{ width: "100%" }}
                 id='state'
+                disabled={disableFields}
               />
             </Box>
           </Box>
@@ -228,6 +250,7 @@ function App() {
               <TextField
                 sx={{ width: "100%" }}
                 id='country'
+                disabled={disableFields}
               />
             </Box>
           </Box>
