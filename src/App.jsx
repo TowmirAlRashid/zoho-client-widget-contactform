@@ -1,6 +1,7 @@
 import { Autocomplete, Box, Button, TextField } from '@mui/material';
 import { useEffect, useState } from 'react';
 import './App.css';
+import InputBox from './components/InputBox';
 
 const ZOHO = window.ZOHO;
 
@@ -64,92 +65,35 @@ function App() {
               </Box>
           </Box>
 
-          <Box sx={{
-              display: "flex",
-              alignItems: "center",
-              m: "0 auto 1.5rem"
-            }}>
-              <Box sx={{ width: "30%", fontSize: "18px" }}>
-                <label htmlFor="primaryContactFirstName">Primary Contact First Name</label>
-              </Box>
-              <Box sx={{ width: "65%"}}>
-                <TextField
-                  disabled={disableFields}
-                  sx={{ width: "100%" }}
-                  id='primaryContactFirstName'
-                />
-              </Box>
-          </Box>
+          <InputBox
+            label="primaryContactFirstName"
+            labelContent="Primary Contact First Name"
+            disableFields={disableFields}
+          />
 
-          <Box sx={{
-              display: "flex",
-              alignItems: "center",
-              m: "0 auto 1.5rem"
-            }}>
-              <Box sx={{ width: "30%", fontSize: "18px" }}>
-                <label htmlFor="primaryContactTitle">Primary Contact Title</label>
-              </Box>
-              <Box sx={{ width: "65%"}}>
-                <TextField
-                  sx={{ width: "100%" }}
-                  disabled={disableFields}
-                  id='primaryContactTitle'
-                />
-              </Box>
-          </Box>
+          <InputBox
+            label="primaryContactTitle"
+            labelContent="Primary Contact Title"
+            disableFields={disableFields}
+          />
 
-          <Box sx={{
-              display: "flex",
-              alignItems: "center",
-              m: "0 auto 1.5rem"
-            }}>
-              <Box sx={{ width: "30%", fontSize: "18px" }}>
-                <label htmlFor="primaryContactPhone">Primary Contact Phone</label>
-              </Box>
-              <Box sx={{ width: "65%"}}>
-                <TextField
-                  sx={{ width: "100%" }}
-                  id='primaryContactPhone'
-                  type='tel'
-                  disabled={disableFields}
-                />
-              </Box>
-          </Box>
+          <InputBox
+            label="primaryContactPhone"
+            labelContent="Primary Contact Phone"
+            disableFields={disableFields}
+          />
 
-          <Box sx={{
-            display: "flex",
-            alignItems: "center",
-            m: "0 auto 1.5rem"
-          }}>
-            <Box sx={{ width: "30%", fontSize: "18px" }}>
-              <label htmlFor="city">City</label>
-            </Box>
-            <Box sx={{ width: "65%"}}>
-              <TextField
-                sx={{ width: "100%" }}
-                id='city'
-                disabled={disableFields}
-              />
-            </Box>
-          </Box>
+          <InputBox
+            label="city"
+            labelContent="City"
+            disableFields={disableFields}
+          />
 
-          <Box sx={{
-            display: "flex",
-            alignItems: "center",
-            m: "0 auto 1.5rem"
-          }}>
-            <Box sx={{ width: "30%", fontSize: "18px" }}>
-              <label htmlFor="zipCode">Zip Code</label>
-            </Box>
-            <Box sx={{ width: "65%"}}>
-              <TextField
-                sx={{ width: "100%" }}
-                id='zipCode'
-                type='text'
-                disabled={disableFields}
-              />
-            </Box>
-          </Box>
+          <InputBox
+            label="zipCode"
+            labelContent="Zip Code"
+            disableFields={disableFields}
+          />
         </Box>
 
         {/* right side */}
@@ -169,106 +113,50 @@ function App() {
             </Button>
           </Box>
 
-          <Box sx={{
-            display: "flex",
-            alignItems: "center",
-            m: "0 auto 1.5rem"
-          }}>
-            <Box sx={{ width: "30%", fontSize: "18px" }}>
-              <label htmlFor="primaryContactLastName">Primary Contact Last Name</label>
-            </Box>
-            <Box sx={{ width: "65%"}}>
-              <TextField
-                sx={{ width: "100%" }}
-                id='primaryContactLastName'
-                disabled={disableFields}
-              />
-            </Box>
-          </Box>
+          <InputBox
+            label="primaryContactLastName"
+            labelContent="Primary Contact Last Name"
+            disableFields={disableFields}
+          />
 
-          <Box sx={{
-            display: "flex",
-            alignItems: "center",
-            m: "0 auto 1.5rem"
-          }}>
-            <Box sx={{ width: "30%", fontSize: "18px" }}>
-              <label htmlFor="primaryContactEmail">Primary Contact Email</label>
-            </Box>
-            <Box sx={{ width: "65%"}}>
-              <TextField
-                sx={{ width: "100%" }}
-                id='primaryContactEmail'
-                type='email'
-                disabled={disableFields}
-              />
-            </Box>
-          </Box>
+          <InputBox
+            label="primaryContactEmail"
+            labelContent="Primary Contact Email"
+            disableFields={disableFields}
+          />
 
-          <Box sx={{
-            display: "flex",
-            alignItems: "center",
-            m: "0 auto 1.5rem"
-          }}>
-            <Box sx={{ width: "30%", fontSize: "18px" }}>
-              <label htmlFor="street">Street</label>
-            </Box>
-            <Box sx={{ width: "65%"}}>
-              <TextField
-                sx={{ width: "100%" }}
-                id='street'
-                disabled={disableFields}
-              />
-            </Box>
-          </Box>
+          <InputBox
+            label="street"
+            labelContent="Street"
+            disableFields={disableFields}
+          />
 
-          <Box sx={{
-            display: "flex",
-            alignItems: "center",
-            m: "0 auto 1.5rem"
-          }}>
-            <Box sx={{ width: "30%", fontSize: "18px" }}>
-              <label htmlFor="state">State</label>
-            </Box>
-            <Box sx={{ width: "65%"}}>
-              <TextField
-                sx={{ width: "100%" }}
-                id='state'
-                disabled={disableFields}
-              />
-            </Box>
-          </Box>
+          <InputBox
+            label="state"
+            labelContent="State"
+            disableFields={disableFields}
+          />
 
-          <Box sx={{
-            display: "flex",
-            alignItems: "center",
-            m: "0 auto 1.5rem"
-          }}>
-            <Box sx={{ width: "30%", fontSize: "18px" }}>
-              <label htmlFor="country">Country</label>
-            </Box>
-            <Box sx={{ width: "65%"}}>
-              <TextField
-                sx={{ width: "100%" }}
-                id='country'
-                disabled={disableFields}
-              />
-            </Box>
-          </Box>
+          <InputBox
+            label="country"
+            labelContent="Country"
+            disableFields={disableFields}
+          />
         </Box>
       </Box>
 
-      <Box
-        sx={{
-          m: "2rem -4rem",
-          width: "100%",
-          display: "flex",
-          justifyContent: "flex-end",
-          gap: '1rem'
-        }}
-      >
-        <Button variant='outlined'>Cancel</Button>
-        <Button variant='contained'>Save</Button>
-      </Box>
+        <Box
+          sx={{
+            m: "2rem -4rem",
+            width: "100%",
+            display: "flex",
+            justifyContent: "flex-end",
+            gap: '1rem'
+          }}
+        >
+          <Button variant='outlined'>Cancel</Button>
+          <Button variant='contained'>Save</Button>
+        </Box>
     </div>
   );
 }
