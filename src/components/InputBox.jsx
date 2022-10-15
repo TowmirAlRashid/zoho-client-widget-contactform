@@ -1,7 +1,7 @@
 import { Box, TextField } from '@mui/material'
 import React from 'react'
 
-const InputBox = ({ label, labelContent, disableFields }) => {
+const InputBox = ({ label, labelContent, disableFields, value, onChange, placeholder }) => {
   return (
     <Box sx={{
         display: "flex",
@@ -14,8 +14,11 @@ const InputBox = ({ label, labelContent, disableFields }) => {
         <Box sx={{ width: "65%"}}>
           <TextField
             disabled={disableFields}
-            sx={{ width: "100%" }}
+            value={value}
+            sx={{ width: "100%", backgroundColor: `${disableFields ? '#F1EEE9': 'transparent'}` }}
             id={label}
+            onChange={onChange}
+            placeholder={placeholder}
           />
         </Box>
     </Box>
