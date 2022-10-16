@@ -1,6 +1,7 @@
 import { Box, TextField } from '@mui/material'
 import React from 'react'
 
+// this component creates a label and a textfield with necessary css
 const InputBox = ({ label, labelContent, disableFields, value, onChange, placeholder }) => {
   return (
     <Box sx={{

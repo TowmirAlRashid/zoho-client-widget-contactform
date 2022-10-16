@@ -13,11 +13,11 @@ function App() {
   const [contacts, setContacts] = useState([]) // gets populated by contacts
 
   const [disableFields, setDisableFields] = useState(true)  // textFields enabled?
-  const [newContactCreated, setNewContactCreated] = useState(false)
+  const [newContactCreated, setNewContactCreated] = useState(false) // new contact create button toggle
 
   const [contactSelected, setContactSelected] = useState() //contact selected from autocomplete
 
-  const [record, setRecord] = useState({
+  const [record, setRecord] = useState({  // holds the field values
     contact: "",
     primaryContactFirstName: '',
     primaryContactLastName: '',
@@ -45,17 +45,16 @@ function App() {
     });
   }, [])
 
-  useEffect(() => {
+  useEffect(() => { // gets the account record
     if(entity && entityId) {
       ZOHO.CRM.API.getRelatedRecords({Entity:entity,RecordID:entityId,RelatedList:"Contacts",page:1,per_page:200})
       .then(function(data){
           setContacts(data?.data);
-          // setContactSelected(data?.data[5]);
       })
     }
   }, [entity, entityId, initialized])
 
-  useEffect(() => {
+  useEffect(() => {  // sets the value of the fields data on selecting specific contact
     if(contactSelected !== null) {
       setRecord({
         primaryContactFirstName: contactSelected?.First_Name || "",
@@ -72,14 +71,14 @@ function App() {
     }
   }, [contactSelected])
 
-  const handleCancel = () => {
+  const handleCancel = () => { // cancel button action
     ZOHO.CRM.UI.Popup.close()
     .then(function(data){
         console.log(data)
     })
   }
 
-  const handleAddContactClick = () => {
+  const handleAddContactClick = () => { // add new contact button action
     setContactSelected();
     setDisableFields(!disableFields)
     setNewContactCreated(!newContactCreated)
@@ -98,7 +97,7 @@ function App() {
     })
   }
 
-  const handleSubmit = () => {
+  const handleSubmit = () => { // save button action
     if(!newContactCreated) {
       ZOHO.CRM.UI.Popup.close()
       .then(function(data){
